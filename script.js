@@ -5,6 +5,7 @@ const heartsButton = document.getElementById('button-hearts');
 const spadesButton = document.getElementById('button-spades');
 const diamondsButton = document.getElementById('button-diamonds');
 const clubsButton = document.getElementById('button-clubs');
+const showallButton = document.getElementById('button-show-all');
 
 populateDeck();
 
@@ -34,6 +35,11 @@ clubsButton.addEventListener('click', () => {
   show (toshow);
   const elements = document.querySelectorAll('#cards > div:not(.clubs)');
   hide(elements);
+});
+
+showallButton.addEventListener('click', () => {
+  const elements = document.querySelectorAll('.hearts, .spades, .diamonds, .clubs');
+  show(elements);
 });
 
 function populateDeck () {
