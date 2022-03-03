@@ -6,8 +6,13 @@ const spadesButton = document.getElementById('button-spades');
 const diamondsButton = document.getElementById('button-diamonds');
 const clubsButton = document.getElementById('button-clubs');
 const showallButton = document.getElementById('button-show-all');
+const sortButton = document.getElementById('sort-button');
 
 populateDeck();
+
+sortButton.addEventListener('click', () => {
+  shuffle();
+});
 
 heartsButton.addEventListener('click', () => {
   const toshow = document.querySelectorAll('.hearts');
@@ -73,3 +78,14 @@ function show(elements) {
     elements[index].style.visibility = 'visible';
   }
 }
+
+function shuffle() {               
+  var parent = document.querySelector('#cards');
+  var divs = parent.children;
+  var frag = document.createDocumentFragment();
+  while (divs.length) {
+    frag.appendChild(divs[Math.floor(Math.random() * divs.length)]);
+  }
+  parent.appendChild(frag);
+}
+
