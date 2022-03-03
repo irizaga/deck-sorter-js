@@ -7,11 +7,17 @@ const diamondsButton = document.getElementById('button-diamonds');
 const clubsButton = document.getElementById('button-clubs');
 const showallButton = document.getElementById('button-show-all');
 const sortButton = document.getElementById('sort-button');
+const unsortButton = document.getElementById('unsort-button');
 
 populateDeck();
 
 sortButton.addEventListener('click', () => {
   shuffle();
+});
+
+unsortButton.addEventListener('click', () => {
+  deleteChildren();
+  populateDeck();
 });
 
 heartsButton.addEventListener('click', () => {
@@ -52,6 +58,15 @@ function populateDeck () {
     const cardsNodeList = cards.map( x => createNode(x, suits[count]));
     const container = document.querySelector("#cards");
     container.append(...cardsNodeList);
+  }
+}
+
+function deleteChildren() {
+  var e = document.querySelector("#cards");
+  var first = e.firstElementChild;
+  while (first) {
+      first.remove();
+      first = e.firstElementChild;
   }
 }
 
