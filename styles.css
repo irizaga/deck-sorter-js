@@ -77,11 +77,11 @@ button:hover {
   color: black;
 }
 
-#sort-button {
+#shuffle-button {
   background-color: #3aa137;
 }
 
-#unsort-button {
+#reset-button {
   background-color: #3489eb
 }
 

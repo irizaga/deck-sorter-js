@@ -6,51 +6,35 @@ const spadesButton = document.getElementById('button-spades');
 const diamondsButton = document.getElementById('button-diamonds');
 const clubsButton = document.getElementById('button-clubs');
 const showallButton = document.getElementById('button-show-all');
-const sortButton = document.getElementById('sort-button');
-const unsortButton = document.getElementById('unsort-button');
+const shuffleButton = document.getElementById('shuffle-button');
+const resetButton = document.getElementById('reset-button');
 
 populateDeck();
 
-sortButton.addEventListener('click', () => {
-  shuffle();
+shuffleButton.addEventListener('click', () => { 
+  shuffle(); 
 });
 
-unsortButton.addEventListener('click', () => {
+resetButton.addEventListener('click', () => {
   deleteChildren();
   populateDeck();
 });
 
-heartsButton.addEventListener('click', () => {
-  const toshow = document.querySelectorAll('.hearts');
-  show (toshow);
-  const elements = document.querySelectorAll('#cards > div:not(.hearts)'); 
-  hide(elements);
-});
+function showSuit(suit) {
+  const toshow = document.querySelectorAll('.' + suit);
+  setVisibility (toshow, 'visible');
+  const elements = document.querySelectorAll('#cards > div:not(.' + suit + ')'); 
+  setVisibility(elements, 'hidden');
+}
 
-spadesButton.addEventListener('click', () => {
-  const toshow = document.querySelectorAll('.spades');
-  show (toshow);
-  const elements = document.querySelectorAll('#cards > div:not(.spades)');
-  hide(elements);
-});
-
-diamondsButton.addEventListener('click', () => {
-  const toshow = document.querySelectorAll('.diamonds');
-  show (toshow);
-  const elements = document.querySelectorAll('#cards > div:not(.diamonds)');
-  hide(elements);
-});
-
-clubsButton.addEventListener('click', () => {
-  const toshow = document.querySelectorAll('.clubs');
-  show (toshow);
-  const elements = document.querySelectorAll('#cards > div:not(.clubs)');
-  hide(elements);
-});
+heartsButton.addEventListener('click', () => { showSuit('hearts') })
+spadesButton.addEventListener('click', () => { showSuit('spades') })
+diamondsButton.addEventListener('click', () => { showSuit('diamonds') })
+clubsButton.addEventListener('click', () => { showSuit('clubs') })
 
 showallButton.addEventListener('click', () => {
-  const elements = document.querySelectorAll('.hearts, .spades, .diamonds, .clubs');
-  show(elements);
+  const elements = document.querySelectorAll('.singlecard');
+  setVisibility(elements, 'visible');
 });
 
 function populateDeck () {
@@ -62,8 +46,8 @@ function populateDeck () {
 }
 
 function deleteChildren() {
-  var e = document.querySelector("#cards");
-  var first = e.firstElementChild;
+  const e = document.querySelector("#cards");
+  let first = e.firstElementChild;
   while (first) {
       first.remove();
       first = e.firstElementChild;
@@ -80,27 +64,16 @@ function createNode(card, suit) {
   return cardDiv;
 }
 
-function hide(elements) {
-  elements = elements.length ? elements : [elements];
-  for (var index = 0; index < elements.length; index++) {
-    elements[index].style.visibility = 'hidden';
-  }
-}
-
-function show(elements) {
-  elements = elements.length ? elements : [elements];
-  for (var index = 0; index < elements.length; index++) {
-    elements[index].style.visibility = 'visible';
-  }
+function setVisibility(elements, visibility) {
+  elements.forEach(element => element.style.visibility = visibility);
 }
 
 function shuffle() {               
-  var parent = document.querySelector('#cards');
-  var divs = parent.children;
-  var frag = document.createDocumentFragment();
+  const parent = document.querySelector('#cards');
+  const divs = parent.children;
+  const frag = document.createDocumentFragment();
   while (divs.length) {
     frag.appendChild(divs[Math.floor(Math.random() * divs.length)]);
   }
   parent.appendChild(frag);
 }
-
