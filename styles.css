@@ -1,0 +1,98 @@
+#cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.singlecard {
+  display: flex;
+  flex-direction: row;
+  width: 40px;
+  height: 60px;
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  border-width: 1px;
+}
+
+.spades {
+  color: black;
+  background-image: url(images/spades.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 30px;
+}
+
+.clubs {
+  color: black;
+  background-image: url(images/clubs.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 30px;
+}
+
+.hearts {
+  color: red;
+  background-image: url(images/hearts.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 30px;
+}
+
+.diamonds {
+  color: red;
+  background-image: url(images/diamonds.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 30px;
+}
+
+.buttons {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  border: 0;
+  font-family: sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: solid 2px black;
+  color: black;
+}
+
+#shuffle-button {
+  background-color: #3aa137;
+}
+
+#reset-button {
+  background-color: #3489eb
+}
+
+#button-hearts, #button-diamonds {
+  background-color: red;
+}
+
+#button-spades, #button-clubs {
+  background-color: #6e6e6e;
+}
+
+#button-show-all {
+  background-color: orange;
+}
